@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import OrderHistory from "../src/components/OrderHistory";
+import orderhistory from "../src/orderhistory.json";
 
 class App extends Component {
+  state = {
+    orderhistory
+  };
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <div className="card">
+          <h1>TESTING 123</h1>
+        </div>
+        <div>
+          {this.state.orderhistory.map(orderhistory => (
+            <OrderHistory
+              image={orderhistory.image}
+              item={orderhistory.item}
+              productID={orderhistory.productID}
+              OrderDate={orderhistory.OrderDate}
+              OrderQuantity={orderhistory.OrderQuantity}
+              OrderCost={orderhistory.OrderCost}
+            />
+          ))}
+        </div>
       </div>
     );
   }
